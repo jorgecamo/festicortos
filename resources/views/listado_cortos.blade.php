@@ -1,16 +1,17 @@
 @extends('plantilla')
 @section('titulo', 'Listado de cortos')
 @section('contenido')
-<h1>Listado de cortos</h1>
-<ul>
+
+<div id="padre">
 @forelse ($cortos as $corto)
-<li>{{ $corto["titulo"] }} </li>
-<ul>
-    <li>{{ $corto["director"] }}</li>
-    <li>{{ $corto["sinapsis"] }}</li>
-</ul> 
-</li>
+<div class="hijo">
+<h1>{{ $corto["titulo"] }} </h1>
+<h6>{{ $corto["director"] }}</h6>
+<p>{{ $corto["sinapsis"] }}</p>
+<a href="{{route('listado_cortosid',$corto['id'])}}" class="btn btn-primary">Detalles</a>
+</div>
 @empty
-<li>No se encontraron libros</li>
-@endforelse</ul>
+<p>No se encontraron libros</p>
+@endforelse
+</div>
 @endsection
